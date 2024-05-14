@@ -10,7 +10,7 @@ import (
 )
 
 type Service struct {
-	//tODO move to pkg?
+	//TODO move to pkg?
 	client *storage.Client
 }
 
