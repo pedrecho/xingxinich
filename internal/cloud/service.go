@@ -49,6 +49,8 @@ func (s *Service) UploadFile(ctx context.Context, bucket, object, filePath strin
 	return fmt.Sprintf("https://storage.googleapis.com/%s/%s", bucket, object), nil
 }
 
+//TODO remove file
+
 func (s *Service) Shutdown() error {
 	return s.client.Close()
 }

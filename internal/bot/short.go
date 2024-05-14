@@ -8,7 +8,8 @@ import (
 type ShortStep = int
 
 const (
-	ShortTitle = iota // 0
+	ShortDefault ShortStep = iota
+	ShortTitle             // 0
 	ShortDescription
 	ShortVideo
 )
@@ -33,7 +34,7 @@ func (b *Bot) Short() {
 	b.bot.Handle(tb.OnText, func(c tb.Context) error {
 		userID := c.Sender().ID
 		short, ok := b.shortMap[userID]
-		if !ok || short.Step == 0 {
+		if !ok || short.Step == ShortDefault {
 			return nil
 		}
 

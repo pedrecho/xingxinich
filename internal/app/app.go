@@ -2,6 +2,7 @@ package app
 
 import (
 	"fmt"
+	"go.uber.org/zap"
 	"xingxinich/internal/bot"
 	"xingxinich/internal/config"
 	"xingxinich/internal/logic"
@@ -19,14 +20,19 @@ func Run(configPath string) error {
 	}
 	defer zapsync()
 
-	l := logic.NewLogic()
+	l, err := logic.NewLogic(cfg)
+	if err != nil {
+		return fmt.Errorf("logic initialization: %w", err)
+	}
 	defer l.Shutdown()
 
-	// TODO log middleware
+	//TODO log middleware
 	b, err := bot.NewBot(cfg.TgBot.Token, l)
 	if err != nil {
 		return fmt.Errorf("tg bot initialization: %w", err)
 	}
+
+	zap.S().Info("Starting bot...")
 	b.Start()
 
 	return nil

@@ -1,0 +1,8 @@
+zaplogger:
+  level: info
+
+tg_bot:
+  token:
+
+cloud:
+  credentials_path: "./configs/google.cloud.credentials.example.json"

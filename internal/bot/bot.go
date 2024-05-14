@@ -31,4 +31,5 @@ func NewBot(token string, logic *logic.Logic) (*Bot, error) {
 
 func (b *Bot) Start() {
 	b.Short()
+	b.bot.Start()
 }
