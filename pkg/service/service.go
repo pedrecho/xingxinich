@@ -1,6 +1,6 @@
 package service
 
-type VideoService interface {
+type MediaService interface {
 	Short(ShortData) error
 	Link() LinkData
 	Shutdown() error
@@ -9,10 +9,7 @@ type VideoService interface {
 type ShortData struct {
 	Title       string
 	Description string
-	//TODO reader/writer
-	//Video
-	//TODO or video link?
-	//Link
+	Link        string
 }
 
 type LinkData struct {
