@@ -2,6 +2,7 @@ package app
 
 import (
 	"fmt"
+	"xingxinich/internal/bot"
 	"xingxinich/internal/config"
 	"xingxinich/internal/logic"
 	"xingxinich/pkg/zaplogger"
@@ -20,6 +21,13 @@ func Run(configPath string) error {
 
 	l := logic.NewLogic()
 	defer l.Shutdown()
+
+	// TODO log middleware
+	b, err := bot.NewBot(cfg.TgBot.Token, l)
+	if err != nil {
+		return fmt.Errorf("tg bot initialization: %w", err)
+	}
+	b.Start()
 
 	return nil
 }
