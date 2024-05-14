@@ -1,8 +1,9 @@
 package service
 
-type Service interface {
+type VideoService interface {
 	Short(ShortData) error
-	Link(LinkData) error
+	Link() LinkData
+	Shutdown() error
 }
 
 type ShortData struct {

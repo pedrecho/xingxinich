@@ -3,17 +3,17 @@ package logic
 import (
 	"context"
 	"fmt"
-	"xingxinich/internal/cloud"
 	"xingxinich/internal/config"
+	"xingxinich/internal/drive"
 )
 
 type Logic struct {
-	cloudService *cloud.Service
+	cloudService *drive.Service
 }
 
 func NewLogic(cfg *config.Config) (*Logic, error) {
 	//TODO ctx
-	cloudService, err := cloud.NewService(context.Background(), cfg.Cloud.CredentialsPath)
+	cloudService, err := drive.NewService(context.Background(), cfg.Drive.CredentialsPath)
 	if err != nil {
 		return nil, fmt.Errorf("google cloud initialization: %w", err)
 	}

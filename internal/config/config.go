@@ -9,7 +9,7 @@ import (
 
 type Config struct {
 	TgBot     TgBotConfig      `yaml:"tg_bot"`
-	Cloud     CloudConfig      `yaml:"cloud"`
+	Drive     Drive            `yaml:"cloud"`
 	Instagram InstagramConfig  `yaml:"instagram"`
 	Logger    zaplogger.Config `yaml:"zaplogger"`
 }
@@ -32,7 +32,7 @@ type TgBotConfig struct {
 	Token string `yaml:"token"`
 }
 
-type CloudConfig struct {
+type Drive struct {
 	CredentialsPath string `yaml:"credentials_path"`
 }
 
